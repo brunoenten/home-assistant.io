@@ -417,7 +417,7 @@ modbus:
       - name: "Bedroom Air Condition"
         address: 10
         target_temp_register: 10
-        hvac_mode_register:
+        _mode_register:
           address: 11
           values:
             state_auto: 0
@@ -427,13 +427,13 @@ modbus:
             state_dry: 4
             state_off: 5
           write_registers: true
-        hvac_onoff_register: 11
+        _onoff_register: 11
         write_registers: true
 ```
 
 {% details "Previous configuration format" %}
 
-The configuration format of `hvac_mode_register` has changed. The old format uses keys such as `off`, `auto`, `cool` instead of `state_off`, `state_auto` and `state_cool` that is currently used. The old keys should no longer be used and is deprecated.
+The configuration format of `_mode_register` has changed. The old format uses keys such as `off`, `auto`, `cool` instead of `state_off`, `state_auto` and `state_cool` that is currently used. The old keys should no longer be used and is deprecated.
 
 {% enddetails %}
 
@@ -486,7 +486,7 @@ climates:
       required: false
       type: string
       default: C
-    hvac_mode_register:
+    _mode_register:
       description: Definition of a register holding and controlling an HVAC mode
       required: false
       type: [map]
@@ -496,7 +496,7 @@ climates:
           required: true
           type: integer
         write_registers:
-          description: if true use write_registers for hvac mode
+          description: if true use write_registers for HVAC mode
           required: false
           type: boolean
           default: false
